@@ -2,11 +2,18 @@ spring:
   application:
     name: config-server
   profiles:
-    active:
-      - native, git
+    active: vault
   cloud:
     config:
       server:
+#        vault:
+#          port: 8200
+#          host: 127.0.0.1
+#          kv-version: 2
+#          backend: licensing-service
+# Vault 와 Spring Actuator 함께 사용할시 에러가 발생.
+# 현재 actuator 최신버전에서 발생한 이슈로 보인다. 일단 actuator 제거하고 실습시 정상 동작하는 것을 확인하였다.
+# https://github.com/spring-cloud/spring-cloud-config/issues/2085
         native:
           search-locations: classpath:/config
         git:
