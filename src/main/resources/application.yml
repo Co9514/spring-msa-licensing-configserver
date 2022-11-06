@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: config-server
+  profiles:
+    active:
+      - native, git
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config
+        git:
+#          스프링 클라우드 컨피그에 깃 서버와 레포지토리 경로를 알림
+          uri: https://github.com/co9514/config.git
+#          스프링 클라우드 컨피그에 구성파일을 찾는데 사용될 깃 경로
+          search-paths: licensingservice
+#          private repository 에 접근하기 위한 방법 블로그 링크 https://oingdaddy.tistory.com/188
+
+
+server:
+  port: 8071
